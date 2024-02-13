@@ -1,0 +1,4 @@
+.env
+
+# Do not commit node_modules
+node_modules

@@ -1,0 +1,18 @@
+{
+  "name": "livesport-wdio",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/appium-service": "^8.31.1",
+    "@wdio/cli": "^8.31.1",
+    "@wdio/local-runner": "^8.31.1",
+    "@wdio/mocha-framework": "^8.31.1",
+    "@wdio/spec-reporter": "^8.31.1",
+    "appium": "^2.5.0",
+    "appium-uiautomator2-driver": "^3.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.ts"
+  }
+}
