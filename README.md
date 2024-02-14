@@ -110,13 +110,9 @@ Assuming that appium server and android emulator are, you can use following snip
 apk and run the test.
 
 ```shell
-# Install dependencies
 npm install && \
-# Create apk folder and download flashscore apk.
 mkdir -p ./apk && \
 wget -O ./apk/flashscore-com.apk t.livesport.cz/android/flashscore-com.apk && \
-
-# Run the tests.
 wdio run ./wdio.conf.ts
 ```
 
