@@ -9,19 +9,22 @@ webdriver.io and appium.
 
 I also decided to use PageObjects pattern for representing the screens inside the livesport app.
 Each screen should have its own file and class representing them, saved
-in [test/pageobjects/livesport](test/pageobjects/livesport)
+in [test/pageobjects/livesport](test/pageobjects/livesport).
 There are also screen parts, for example [BottomNavigationBar](test/pageobjects/livesport/parts/) saved
 in [test/pageobjects/parts/](test/pageobjects/livesport/parts) folder.
 
 The test itself is in [test.e2e.ts](test/specs/test.e2e.ts).
 
-I wanted to use `describe` method as test case and `it` as test steps, but after trying I realised that `it` is in fact test case itself.
+I wanted to use `describe` method as test case and `it` as test steps, but after trying I realised that `it` is in fact
+test case itself.
 Therefore, I need to have all the test steps in one `it` block.
 
-Other option would be to use Mocha's bail option in [wdio.conf.ts](wdio.conf.ts) `mochaOpts: { bail: true }`. That would bail other test cases.
+Other option would be to use Mocha's bail option in [wdio.conf.ts](wdio.conf.ts) `mochaOpts: { bail: true }`. That would
+bail other test cases after one fail.
+
 ### Environment
 
-As part of my work I added also support for test parameters, those are stored in [.env](.env) file, these parameter are
+As part of my work I added also support for test parameters, those are stored in [.env](.env) file, these parameters are
 then parsed in [wdio.conf.ts](wdio.conf.ts) and are passed as capabilities to appium server. I chose following:
 
 ```
@@ -121,10 +124,10 @@ wdio run ./wdio.conf.ts
 
 ## Reálná mobilní zařízení vs. emulátory - výhody a nevýhody
 
-|   | Realny device                                                                                                                                                                                             | Emulator                                                                                                                                                                                                                                                                                                                              |
-|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| + | Odhaleni bugu na realnem zarizeni (realne produkcni prostredi), moznost pracovat s googlePlayServices (napriklad testovat nakupy). Testovani s ostatnimi aplikacemi (vlivu ostatnich aplikaci na tu nasi) | Rychlost, cena, jednodussi setup. Moznost mockovani stavu zarizeni (pripojeni, level baterie, etc.). Moznost root pristupu (po uprave devicu).                                                                                                                                                                                        |
-| - | Porizovaci a provozni cena, udrzba farmy je velice casove nakladna. Moznost flaky testu z duvodu zasahu operacniho systemu, ostatich aplikaci, pripojeni, atd.                                            | Moznost neodhaleni chyb, ktere se vyskytuji pouzi na realnem zarizeni, ci zarizeni specifickem pro jednoho vyrobce (nemoznost reprodukce bugu). Napriklad v minulosti dochazelo k chybam na zarizenich Xiaomi a HUIAWEI kvuli power managementu. Celkem slozite nastavovani google play services a prihlasovani google a jinych uctu. |
+|   | Realny device                                                                                                                                                                                                                                                                                 | Emulator                                                                                                                                                                                                                                                                                                                                                                                             |
+|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| + | Odhaleni bugu na realnem zarizeni (realne produkcni prostredi), moznost pracovat s googlePlayServices (napriklad testovat nakupy). Testovani s ostatnimi aplikacemi (vlivu ostatnich aplikaci na tu nasi). Presnost testovani vykonu aplikace a moznost testovani realnych podminek pripojeni | Rychlost, cena, jednodussi setup. Moznost mockovani stavu zarizeni (pripojeni, level baterie, etc.). Moznost root pristupu (po uprave devicu).                                                                                                                                                                                                                                                       |
+| - | Porizovaci a provozni cena, udrzba farmy je velice casove nakladna. Moznost flaky testu z duvodu zasahu operacniho systemu, ostatich aplikaci, pripojeni, atd.                                                                                                                                | Moznost neodhaleni chyb, ktere se vyskytuji pouzi na realnem zarizeni, ci zarizeni specifickem pro jednoho vyrobce (nemoznost reprodukce bugu). Napriklad v minulosti dochazelo k chybam na zarizenich Xiaomi a HUIAWEI kvuli power managementu. Celkem slozite nastavovani google play services a prihlasovani google a jinych uctu. Omezeni hardwaru, napriklad nemoznost jednodusse pouzit kameru |
 
 ## Jak pomocí capabilities nastartovat nainstalovanou aplikaci, nainstalovat aplikaci a jak uvést nainstalovanou aplikaci do výchozího stavu
 
