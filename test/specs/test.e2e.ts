@@ -105,4 +105,3 @@ describe('Test the Livesport App Favourites behaviour.', () => {
         await expect(FavouritesSettingsPage.btnSearchTeam).toHaveText("SEARCH TEAM")
     })
 })
-
