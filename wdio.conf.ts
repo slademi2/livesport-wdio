@@ -62,11 +62,8 @@ export const config: Options.Testrunner = {
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
 
-        //'appium:deviceName': '47b61bf0',
         'appium:udid': androidDeviceSerial,
-        // TODO: Change to real one
         'appium:deviceName': "Android GoogleAPI Emulator",
-        //'appium:platformVersion': '11.0',
 
         // App installation
         'appium:app': `${process.cwd()}/apk/flashscore-com.apk`, // Full path to the APK file you want to test

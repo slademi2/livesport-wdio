@@ -59,7 +59,7 @@ It is assumed that machine has already installed `android emulator` and `appium 
 
 ### Run the android emulator
 
-To run the android emulator you can use Android Studios device manager or you can use appium-installer.
+To run the android emulator you can use Android Studios device manager, or you can use appium-installer.
 
 ```shell
 npx appium-installer
