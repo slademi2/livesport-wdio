@@ -10,7 +10,7 @@ class NewsPage extends Page {
     }
 
     private get btnSkip() {
-        // For some reason when using Id, the click on element doesn't work. The Appium viewer seems no to find the btn_skip id as well.
+        // For some reason when using ID, the click on element doesn't work. The Appium viewer seems no to find the btn_skip id as well.
         // return this.getElementById("eu.livesport.FlashScore_com_plus:id/btn_skip")
         // Therefore, using workaround with resourceId and text.
         return $(this.btnSkipSelector)

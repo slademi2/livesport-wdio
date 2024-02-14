@@ -9,12 +9,20 @@ class RemoveFromFavouritesDialogPart extends Page {
         return this.getElementById(this.titleSelector)
     }
 
+    get btnNo() {
+        return this.getElementById(this.btnNoSelector)
+    }
+
+    get btnRemove() {
+        return this.getElementById(this.btnRemoveSelector)
+    }
+
     async remove() {
-        return await this.getElementById(this.btnRemoveSelector).click()
+        return await this.btnRemove.click()
     }
 
     async doNotRemove() {
-        return await this.getElementById(this.btnNoSelector).click()
+        return await this.btnNo.click()
     }
 }
 

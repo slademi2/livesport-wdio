@@ -20,12 +20,13 @@ class SearchPage extends Page {
     private readonly btnBackSelector = "eu.livesport.FlashScore_com_plus:id/back_button";
     private readonly textViewMostPopularSearchesSelector = "eu.livesport.FlashScore_com_plus:id/header";
 
-    private get editTextSearch() {
-        return this.getElementById(this.editTextSearchSelector);
+
+    public get btnBack() {
+        return this.getElementById(this.btnBackSelector);
     }
 
-    private get btnBack() {
-        return this.getElementById(this.btnBackSelector);
+    public get editTextSearch() {
+        return this.getElementById(this.editTextSearchSelector);
     }
 
     public get textViewMostPopularSearches() {

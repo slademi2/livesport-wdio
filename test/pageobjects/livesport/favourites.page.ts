@@ -9,8 +9,12 @@ class FavouritesPage extends Page {
         return this.getElementById(this.txtFavouritesSelector)
     }
 
+    get imgButtonFavouritesSettings() {
+        return this.getElementById(this.imgButtonFavouritesSettingsSelector)
+    }
+
     async goToFavouritesSettings() {
-        await this.getElementById(this.imgButtonFavouritesSettingsSelector).click()
+        await this.imgButtonFavouritesSettings.click()
     }
 }
 
