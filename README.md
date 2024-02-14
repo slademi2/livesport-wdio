@@ -2,11 +2,11 @@
 
 This is a homework as part of the hiring process to Livesport.
 
-
 ## Testing strategy
 
 For implementation of the tests I used Typescript language and Mocha framework (comes from initialising wdio) with
 webdriver.io and appium.
+
 I also decided to use PageObjects pattern for representing the screens inside the livesport app.
 Each screen should have its own file and class representing them, saved
 in [test/pageobjects/livesport](test/pageobjects/livesport)
@@ -42,8 +42,8 @@ Via these the behavior of the test can be changed:
 
 ### Test Results
 
-Test results are located in [reports](reports) folder. Reports are in `junit` and are named in
-format `results-${platformName}-${deviceName}-${timestamp}.xml`.
+Test results are located in [reports](reports) folder. Reports are in `junit` format (.xml) and are named in
+following fasion: `results-${platformName}-${deviceName}-${timestamp}.xml`.
 
 ## Running the tests:
 
@@ -58,7 +58,9 @@ To run the android emulator you can use Android Studios device manager or you ca
 ```shell
 npx appium-installer
 ```
-Make sure that you have Android environment variables set, if not please follow [variables setup](https://developer.android.com/tools/variables)
+
+Make sure that you have Android environment variables set, if not please
+follow [variables setup](https://developer.android.com/tools/variables)
 
 ### Run the appium server
 
@@ -117,26 +119,32 @@ wdio run ./wdio.conf.ts
 
 ## Reálná mobilní zařízení vs. emulátory - výhody a nevýhody
 
-|   | Realny device                                                                                                                                                                                             | Emulator                                                                                                                                                                                                            |
-|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| + | Odhaleni bugu na realnem zarizeni (realne produkcni prostredi), moznost pracovat s googlePlayServices (napriklad testovat nakupy). Testovani s ostatnimi aplikacemi (vlivu ostatnich aplikaci na tu nasi) | Rychlost, cena, jednodussi setup.                                                                                                                                                                                   |
-| - | Porizovaci a provozni cena, udrzba farmy je velice casove nakladna. Moznost flaky testu z duvodu zasahu operacniho systemu, ostatich aplikaci, pripojeni, atd.                                            | Moznost neodhaleni chyb, ktere se vyskytuji pouzi na realnem zarizeni, ci zarizeni specifickem pro jednoho vyrobce. Napriklad v minulosti dochazelo k chybam na zarizenich XIOAMI a HUIAWEI kvuli power managementu |
+|   | Realny device                                                                                                                                                                                             | Emulator                                                                                                                                                                                                                                                                                                                              |
+|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| + | Odhaleni bugu na realnem zarizeni (realne produkcni prostredi), moznost pracovat s googlePlayServices (napriklad testovat nakupy). Testovani s ostatnimi aplikacemi (vlivu ostatnich aplikaci na tu nasi) | Rychlost, cena, jednodussi setup. Moznost mockovani stavu zarizeni (pripojeni, level baterie, etc.). Moznost root pristupu (po uprave devicu).                                                                                                                                                                                        |
+| - | Porizovaci a provozni cena, udrzba farmy je velice casove nakladna. Moznost flaky testu z duvodu zasahu operacniho systemu, ostatich aplikaci, pripojeni, atd.                                            | Moznost neodhaleni chyb, ktere se vyskytuji pouzi na realnem zarizeni, ci zarizeni specifickem pro jednoho vyrobce (nemoznost reprodukce bugu). Napriklad v minulosti dochazelo k chybam na zarizenich Xiaomi a HUIAWEI kvuli power managementu. Celkem slozite nastavovani google play services a prihlasovani google a jinych uctu. |
 
 ## Jak pomocí capabilities nastartovat nainstalovanou aplikaci, nainstalovat aplikaci a jak uvést nainstalovanou aplikaci do výchozího stavu
 
 1. Nastartovat nainstalovanou aplikaci:
-  - Nastartovat nainstalovanou aplikaci muzeme pomoci parameteru `appPackage` a `appActivity`, napriklad:
-  - `"appium:appPackage": "eu.livesport.FlashScore_com_plus"`
-  - `"appium:appActivity": "eu.livesport.LiveSport_cz.config.core.DefaultLauncher"}`
+
+- Nastartovat nainstalovanou aplikaci muzeme pomoci parameteru `appPackage` a `appActivity`, napriklad:
+- `"appium:appPackage": "eu.livesport.FlashScore_com_plus"`
+- `"appium:appActivity": "eu.livesport.LiveSport_cz.config.core.DefaultLauncher"}`
+
 2. Nainstalovat aplikaci
-  - Aplikaci lze nainstalovat pomoci parameteru "app", napriklad v tomto testu je pouzito:
-    ```'appium:app': ./apk/flashscore-com.apk```
-  - 
+
+- Aplikaci lze nainstalovat pomoci parameteru "app", napriklad v tomto testu je pouzito:
+  ```'appium:app': ./apk/flashscore-com.apk```
 
 ## Předání proměnné do testu - například platforma (ios/android) apod.
-Predat promennou do testu lze vice zpusoby, ja jsem zvolil sestu environment promennych. Pouzivam k tomu [.env](.env) soubor, kdy pak v [wdio.conf.ts](wdio.conf.ts) k promennym pristupuji pomoici `process.env`.
+
+Predat promennou do testu lze vice zpusoby, ja jsem zvolil environment promenne. Pouzivam k tomu [.env](.env)
+soubor, kdy pak v [wdio.conf.ts](wdio.conf.ts) k promennym pristupuji pomoici `process.env`.
 Timto zpusobem by slo i zmenit capabilities pro pouziti iOS zarizeni.
 
-Dalsim zpusobem by bylo specifikovani environment parameteru primo pred spustenim prikazu. Napriklad: `MY_PARAM=myValue wdio run ./wdio.conf.ts`.
+Dalsim zpusobem by bylo specifikovani environment parameteru primo pred spustenim prikazu.
+Napriklad: `MY_PARAM=myValue wdio run ./wdio.conf.ts`.
 
-Dalsim zpusobem muze byt cteni jineho config souboru v ramci testu nebo ve wdio configu.
+Dalsim zpusobem muze byt cteni jakehokoliv config souboru v ramci testu nebo ve wdio configu. Timto zpusovem se pak muze
+pred spustenim v CI nahradit cely obsah souboru.
