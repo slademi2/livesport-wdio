@@ -9,7 +9,8 @@ webdriver.io and appium.
 
 I also decided to use PageObjects pattern for representing the screens inside the livesport app.
 Each screen should have its own file and class representing them, saved
-in [test/pageobjects/livesport](test/pageobjects/livesport).
+in [test/pageobjects/livesport](test/pageobjects/livesport). There is parent class `Page` that should contain all common
+methods for the pages.
 There are also screen parts, for example [BottomNavigationBar](test/pageobjects/livesport/parts/) saved
 in [test/pageobjects/parts/](test/pageobjects/livesport/parts) folder.
 
