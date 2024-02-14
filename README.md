@@ -49,7 +49,7 @@ following fasion: `results-${platformName}-${deviceName}-${timestamp}.xml`.
 
 There are few steps that needs to be done before running these tests. It also depends on your setup.
 
-It is assumed that machine has already installed android emulator and appium server.
+It is assumed that machine has already installed `android emulator` and `appium server` also `Node.js` is present.
 
 ### Run the android emulator
 
