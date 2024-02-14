@@ -2,19 +2,6 @@
 
 This is a homework as part of the hiring process to Livesport.
 
-## Set Android environment variables
-
-## Setup Android emulator
-
-If not already in place, you'll need to set up android emulator. You can do this by:
-
-```shell
-npx appium-installer
-```
-
-This tool will also help you launch your android emulator if you don't want to use Android Studio's device manager.
-
-# Test
 
 ## Testing strategy
 
@@ -58,21 +45,22 @@ Via these the behavior of the test can be changed:
 Test results are located in [reports](reports) folder. Reports are in `junit` and are named in
 format `results-${platformName}-${deviceName}-${timestamp}.xml`.
 
-# Running the tests:
+## Running the tests:
 
 There are few steps that needs to be done before running these tests. It also depends on your setup.
 
 It is assumed that machine has already installed android emulator and appium server.
 
-## Run the android emulator
+### Run the android emulator
 
-To run the android emulator you can use Android Studios device manager or you can use
+To run the android emulator you can use Android Studios device manager or you can use appium-installer.
 
 ```shell
 npx appium-installer
 ```
+Make sure that you have Android environment variables set, if not please follow [variables setup](https://developer.android.com/tools/variables)
 
-## Run the appium server
+### Run the appium server
 
 For running appium server, you can use following command:
 
@@ -82,7 +70,7 @@ appium server -p 4723 --base-path=/wd/hub
 
 If port is changed, it needs to be changed then in [.env](.env) file as well.
 
-## Install dependencies
+### Install dependencies
 
 Install dependencies for the project. Simply do it by:
 
@@ -90,7 +78,7 @@ Install dependencies for the project. Simply do it by:
 npm install
 ```
 
-## Download flashscore apk
+### Download flashscore apk
 
 To download flashscore apk, you can simply run following commands:
 
@@ -99,7 +87,7 @@ mkdir -p ./apk && \
 wget -O ./apk/flashscore-com.apk t.livesport.cz/android/flashscore-com.apk
 ```
 
-## Run the tests
+### Run the tests
 
 All should be prepared now, you're free to run the tests itself.
 Do so by executing following command:
@@ -109,7 +97,7 @@ Do so by executing following command:
 wdio run ./wdio.conf.ts
 ```
 
-## Or as one script
+### Or as one script
 
 Assuming that appium server and android emulator are, you can use following snippet to install dependencies, download
 apk and run the test.
