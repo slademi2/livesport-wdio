@@ -13,7 +13,8 @@ in [test/pageobjects/livesport](test/pageobjects/livesport).
 There are also screen parts, for example [BottomNavigationBar](test/pageobjects/livesport/parts/) saved
 in [test/pageobjects/parts/](test/pageobjects/livesport/parts) folder.
 
-The test itself is in [test.e2e.ts](test/specs/test.e2e.ts).
+The test itself is in [test.e2e.ts](test/specs/test.e2e.ts). I tried to get rid of repetition where it made sense,
+therefore extracting locators to variables. The code is commented and to more complex methods I added documentation.
 
 I wanted to use `describe` method as test case and `it` as test steps, but after trying I realised that `it` is in fact
 test case itself.
