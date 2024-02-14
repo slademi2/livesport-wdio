@@ -13,10 +13,12 @@ in [test/pageobjects/livesport](test/pageobjects/livesport)
 There are also screen parts, for example [BottomNavigationBar](test/pageobjects/livesport/parts/) saved
 in [test/pageobjects/parts/](test/pageobjects/livesport/parts) folder.
 
-The test itself is in [test.e2e.ts](test/specs/test.e2e.ts). It contains one testcase (`describe` method) as described
-in the assignment.
-The testcase is distributed into test steps per assignment by using `it` methods.
+The test itself is in [test.e2e.ts](test/specs/test.e2e.ts).
 
+I wanted to use `describe` method as test case and `it` as test steps, but after trying I realised that `it` is in fact test case itself.
+Therefore, I need to have all the test steps in one `it` block.
+
+Other option would be to use Mocha's bail option in [wdio.conf.ts](wdio.conf.ts) `mochaOpts: { bail: true }`. That would bail other test cases.
 ### Environment
 
 As part of my work I added also support for test parameters, those are stored in [.env](.env) file, these parameter are

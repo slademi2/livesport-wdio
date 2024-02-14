@@ -6,7 +6,7 @@ const androidDeviceSerial: string = process.env.ANDROID_DEVICE_SERIAL === undefi
 const noReset: boolean = process.env.APPIUM_NO_RESET === undefined ? false : process.env.APPIUM_NO_RESET === "true"
 const fullReset: boolean = process.env.APPIUM_FULL_RESET === undefined ? true : process.env.APPIUM_FULL_RESET === "true"
 
-function outputFileFormat(options: any) { // options is an object containing test details
+function outputFileFormat(options: any, extension: string) { // options is an object containing test details
     const {capabilities} = options;
     const platformName = capabilities.platformName || 'platform';
     const deviceName = capabilities['appium:udid'] || 'udid';
@@ -14,7 +14,7 @@ function outputFileFormat(options: any) { // options is an object containing tes
     const date = new Date();
     const timestamp = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}_${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
 
-    return `results-${platformName}-${deviceName}-${timestamp}.xml`;
+    return `results-${platformName}-${deviceName}-${timestamp}.${extension}`;
 };
 
 export const config: Options.Testrunner = {
@@ -139,13 +139,12 @@ export const config: Options.Testrunner = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
-
     reporters: [
         'spec',
         ['junit', {
             outputDir: './reports/junit',
             outputFileFormat: function (options) {
-                return outputFileFormat(options)
+                return outputFileFormat(options, "xml")
             }
         }]
     ],
@@ -154,6 +153,8 @@ export const config: Options.Testrunner = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
+        // Can be used for bailing test cases after one fails.
+        //bail: true,
     }
 }
